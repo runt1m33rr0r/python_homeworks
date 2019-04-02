@@ -6,7 +6,7 @@ from random import randint
 class Game:
     def __init__(self):
         self.padding = 10
-        self.words = self.load_words()
+        self.words = ['python', 'java', 'linux', 'windows', 'bsd', 'javascript', 'html']
         self.selected_word = self.select_word()
         self.guessed = []
         self.intial_tries = 6
@@ -61,7 +61,8 @@ class Game:
         self.tries = self.intial_tries
         self.selected_word = self.select_word()
         self.guessed = []
-        self.word.LabelText = self.construct_word()
+        self.word.SetLabel(self.construct_word())
+        self.word.CenterOnParent(dir=wx.HORIZONTAL)
         self.image.SetBitmap(self.images[0])
 
 
@@ -70,11 +71,6 @@ class Game:
         for i in range(7):
             result.append(wx.Bitmap('./images/%d.jpg' % i, wx.BITMAP_TYPE_JPEG))
         return result
-
-
-    def load_words(self):
-        with open('./words.txt') as f:
-            return f.read().splitlines()
 
 
     def select_word(self):
