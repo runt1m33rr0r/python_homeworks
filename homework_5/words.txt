@@ -1,2 +1,7 @@
-test
-word
+python
+java
+linux
+windows
+bsd
+javascript
+html
