@@ -108,11 +108,12 @@ class Game:
         self.word.SetLabel(self.construct_word())
         if '_' not in self.word.GetLabel():
             self.player_message.SetLabel('You win!')
-        elif self.tries == self.intial_tries:
-            self.player_message.SetLabel('')
+            self.toggle_buttons(True)
         elif self.tries <= 0:
             self.player_message.SetLabel('You lose!')
             self.toggle_buttons(True)
+        elif self.tries == self.intial_tries:
+            self.player_message.SetLabel('')
         else:
             self.player_message.SetLabel('You have %d tries left!' % self.tries)
 
@@ -123,6 +124,11 @@ class Game:
     def toggle_buttons(self, state):
         for button in self.letter_buttons:
             button.SetValue(state)
+
+            if state == True:
+                button.Disable()
+            else:
+                button.Enable()
 
 
     def select_letter(self, letter):
