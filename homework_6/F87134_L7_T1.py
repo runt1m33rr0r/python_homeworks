@@ -5,11 +5,11 @@ class SchoolMember(object):
 
 
 class Teacher(SchoolMember):
-    def __init__(self, name, age, salary, courses = {}):
+    def __init__(self, name, age, salary):
         super(Teacher, self).__init__(name, age)
 
         self.salary = salary
-        self.courses = courses
+        self.courses = {}
 
     def getSalary(self):
         return self.salary
@@ -23,10 +23,10 @@ class Teacher(SchoolMember):
     
 
 class Student(SchoolMember):
-    def __init__(self, name, age, courses = {}):
+    def __init__(self, name, age):
         super(Student, self).__init__(name, age)
 
-        self.courses = courses
+        self.courses = {}
     
     def attendCourse(self, signature, signup_year):
         self.courses[signature] = { 'grades': [], 'year': signup_year }
@@ -46,12 +46,3 @@ class Student(SchoolMember):
             grades_sum += grade
         
         return grades_sum / len(course_grades)
-
-
-student = Student('Pesho', 20)
-student.attendCourse('CSCB101', 2018)
-student.addGrade('CSCB101', 4)
-student.addGrade('CSCB101', 3)
-student.getCourses()
-
-print student.getAvgGrade('CSCB101')
