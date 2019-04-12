@@ -16,10 +16,3 @@ class Fibs(object):
 
     def __iter__(self):
         return self
-
-fibs = Fibs()
-for f in fibs:
-    if f < 1000:
-        print f
-    else:
-        break

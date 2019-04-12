@@ -1,5 +1,9 @@
 import string
+import sys
 
+
+input = sys.argv[1:]
+startX, startY = int(input[0]), int(input[1])
 
 maze = [
     ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
@@ -62,7 +66,7 @@ def solveMaze(x, y):
             steps.append((x, y))
             isBacktracking = False
         else:
-            maze[x][y] = 'b'
+            maze[x][y] = 'x'
             x, y = steps.pop()
             _, _, isValidPath = chooseNext(x, y)
             isBacktracking = True
@@ -73,5 +77,5 @@ def printMaze():
         print string.join(row)
 
 
-solveMaze(1, 1)
+solveMaze(startX, startY)
 printMaze()
