@@ -49,8 +49,10 @@ def solveMaze(x, y):
     
     steps = [(x, y)]
     isValidPath = True
+    isBacktracking = False
     while True:
-        x, y, isValidPath = chooseNext(x, y)
+        if not isBacktracking:
+            x, y, isValidPath = chooseNext(x, y)
 
         if maze[x][y] == 'g':
             return
@@ -58,14 +60,12 @@ def solveMaze(x, y):
         if isValidPath:
             maze[x][y] = '.'
             steps.append((x, y))
+            isBacktracking = False
         else:
-            nextX, nextY, nextValid = chooseNext(x, y)
-            if not nextValid:
-                maze[x][y] = 'b'
+            maze[x][y] = 'b'
             x, y = steps.pop()
-            
-            printMaze()
-            print
+            _, _, isValidPath = chooseNext(x, y)
+            isBacktracking = True
     
 
 def printMaze():
