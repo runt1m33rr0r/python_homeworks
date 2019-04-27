@@ -7,7 +7,7 @@ class BisectionTest(unittest.TestCase):
         def fake(x):
             return x ** 2 - 3 * x + 4
 
-        self.assertRaises(ValueError, bisection, 1, 1, fake)
+        self.assertRaises(ValueError, bisection, 0, 10, fake)
 
     
     def test_bisection_should_find_solution(self):
