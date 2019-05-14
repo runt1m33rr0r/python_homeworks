@@ -8,7 +8,7 @@ user_query = input[0]
 
 lines = []
 
-with open('retn5_dat.txt') as f:
+with open(os.path.join(os.path.dirname(__file__), 'retn5_dat.txt')) as f:
     lines = f.readlines()
 
 records = [line.rstrip().split('^') for line in lines]
